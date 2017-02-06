@@ -3,8 +3,6 @@ use yii\grid\GridView;
 use yii\data\ArrayDataProvider;
 use yii\widgets\Pjax;
 
-$this->registerJs('console.log("My custom Javascript")'); // also load asset bundles would work here
-
 $dataProvider = new ArrayDataProvider([
     'allModels' => [
     	[
@@ -39,17 +37,17 @@ $dataProvider = new ArrayDataProvider([
     ],
 ]); 
 
-Pjax::begin([
+/*Pjax::begin([
       'id'=>'my-grid-container',
       'timeout'=>5500,  
       'enablePushState'=>false,
       'clientOptions'=>[
       	'skipOuterContainers'=>true
       ]    
-    ]);
+    ]);*/
 
 echo GridView::widget([
     	'dataProvider' => $dataProvider,    
 	]);
 
-Pjax::end(); ?>
+/*Pjax::end();*/ ?>

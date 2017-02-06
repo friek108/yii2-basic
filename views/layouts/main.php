@@ -12,7 +12,19 @@ use yii\widgets\Pjax;
 
 AppAsset::register($this);
 
-$this->registerJs('jQuery(document).pjax(".navbar-nav a", {"push":true,"replace":false,"timeout":5500,"scrollTo":false,"container":"#pjax-page-container"}); ');
+$this->registerJs(
+'jQuery(document).pjax(".navbar-nav a", {"push":true,"replace":false,"timeout":5500,"scrollTo":false,"container":"#pjax-page-container"});
+
+$("#pjax-page-container").on("click", "table thead *[data-sort]", function (e) {
+    jQuery.ajax({
+        url: jQuery(this).attr("href"),
+        type: "GET",
+        success: function (data) {
+            $("#grid-wrapper").html(data);
+        }
+    });
+    return false;
+});'); 
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
