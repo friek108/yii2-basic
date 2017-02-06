@@ -21,6 +21,7 @@ $("#pjax-page-container").on("click", "table thead *[data-sort]", function (e) {
         type: "GET",
         success: function (data) {
             $("#grid-wrapper").html(data);
+            console.log("init the grid custom js");
         }
     });
     return false;
